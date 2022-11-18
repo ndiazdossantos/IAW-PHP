@@ -2,7 +2,7 @@
 
 $ruta = $_REQUEST['ruta'];
 
-function recorrerArray ($ruta){
+function obtenerArrNum ($ruta){
 
     $fp=fopen("$ruta", "r");
     while(!feof($fp)){
@@ -14,7 +14,7 @@ function recorrerArray ($ruta){
     return $array;
 }
 
-$resultado=recorrerArray($ruta);
+$resultado=obtenerArrNum($ruta);
 
 print("<b>Posición => Contenido</b>");
 
