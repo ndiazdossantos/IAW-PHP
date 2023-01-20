@@ -7,7 +7,7 @@ $telefono= $_REQUEST['telefono_novo'];
 $nifdni = $_REQUEST['nifdni_novo'];
 $email = $_REQUEST['email_novo'];
 
-
+//establecemos conexion
 $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 if (mysqli_connect_errno())
 {
@@ -15,28 +15,55 @@ if (mysqli_connect_errno())
         mysqli_connect_error());
     exit;
 }
-//consulta para comprobar el login
-$select_query = "SELECT usuario FROM usuario where usuario = '$usuario' and contrasinal = '$contrasinal'";
-$usuario_comprobado = mysqli_query($mysqli_link, $select_query);
-$numfilas=$usuario_comprobado->num_rows;
+//comprobación de si los campos de registro están vacía
+if(empty($usuario)){
 
-//mostramos resultado positivo o negativo del login
-if ($numfilas > 0) {
-    echo "hay login";
-} elseif ($numfilas == 0){
-
-    echo " <br> Non existe dicha conta, serás redirixido en 5 segundos ó rexistro. ";
+    echo " <br> Campo usuario vacío, debes completarlo ";
     header("refresh: 5; url = rexistro.html");
 
+} elseif (empty($contrasinal)){
 
-} else {
+    echo " <br> Campo contrasinal vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
 
-    echo "<img src='images/rickpng.png' border='0' width='300' height='100'>";
-    echo " <br> O contrasinal no coincide, serás redirixido en 5 segundos. ";
-    header("refresh: 5; url = index.html");
+} elseif (empty($nome)){
+
+    echo " <br> Campo nome vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
+
+} elseif (empty($direccion)){
+
+    echo " <br> Campo dirección vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
+
+} elseif (empty($telefono)){
+
+    echo " <br> Campo telefono vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
+
+} elseif (empty($nifdni)){
+
+    echo " <br> Campo NIF & DNI vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
+
+} elseif (empty($email)){
+
+    echo " <br> Campo email vacío, debes completarlo ";
+    header("refresh: 5; url = rexistro.html");
+
+}else{
+
+    $insert_query = "INSERT INTO novo_rexistro (usuario, contrasinal, nome, direccion, telefono, nifdni, email)
+    VALUES ('$usuario', '$contrasinal', '$nome', '$direccion', '$telefono', '$nifdni', '$email')";
+
+    if (mysqli_query($mysqli_link, $insert_query)) {
+        echo 'Registro completado, regresando a la página principal';
+        header("refresh: 5; url = index.html");
+
+    }
+
+    mysqli_close($mysqli_link);
 }
-
-mysqli_close($mysqli_link);
 
 
 ?>
