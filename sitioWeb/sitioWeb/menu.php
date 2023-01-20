@@ -1,7 +1,40 @@
 <?php
+session_start();
+echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+
+<form name="formulario_menu" method="post" action="menu.php">
+
+    <h2> Menú de interacción </h2>
+
+
+    <br><input value="Mostar vehículos dispoñibles para comprar" type="submit" name="venta" /><br>
+    <br><input value= "Mostar vehículos dispoñibles para alugar" type="submit" name="aluguer" /><br>
+
+</form>
+
+<form name="formulario_configuracion" method="post" action="configuracion.php">
+
+    <br><br><h2> Usuario </h2>
+
+    <input value="Modificar conta" type="submit" name="modificar" />
+</form>
+
+</body>
+</html>
+
+<?php
 
 //iniciamos la sesión
-session_start();
+#session_start(); ya iniciada arriba
 
 //hacemos la conexión con el servicio mysql
 $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
@@ -19,7 +52,7 @@ if(!isset($_SESSION["usuario"])){
     header("refresh: 5; url = index.html");
 
 }else{
-    echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>";
+    #echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"; ya se muestra arriba
     if (isset($_REQUEST['venta'])){
 
         $select_query2 = "SELECT * FROM vehiculo_venda";
@@ -62,3 +95,5 @@ if(!isset($_SESSION["usuario"])){
 
 
 }
+
+?>
