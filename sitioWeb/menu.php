@@ -44,6 +44,7 @@ if (mysqli_connect_errno())
         mysqli_connect_error());
     exit;
 }
+mysqli_set_charset($mysqli_link,"utf8");
 //comprobamos si la sesión esta iniciada como usuario, si no lo está nos redirige al login, si lo está nos permite
 //interactuar con el menú
 if(!isset($_SESSION["usuario"])){
@@ -66,8 +67,9 @@ if(!isset($_SESSION["usuario"])){
             echo "Descrición:" . $fila['descricion'] . "<br/>";
             echo "Marca:" . $fila['marca'] . "<br/>";
             echo "Prezo:" . $fila['prezo'] . "<br/>";
-            echo "Foto:" . $fila['foto'] . "<br/>";
+            echo "Foto: <img src=' " . $fila['foto'] . "'> <br/>";
             echo "<br/>";
+
         }
 
     }
@@ -78,7 +80,7 @@ if(!isset($_SESSION["usuario"])){
         $result = mysqli_query($mysqli_link, $select_query);
         $numfilas=$result->num_rows;
 
-
+        echo "<form name='formulario_aluger' method='post' action='aluguer.php'>";
         while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<br><b> Vehículos en aluguer</b><br>";
             echo "Modelo:" . $fila['modelo'] . "<br/>";
@@ -86,9 +88,15 @@ if(!isset($_SESSION["usuario"])){
             echo "Descrición:" . $fila['descricion'] . "<br/>";
             echo "Marca:" . $fila['marca'] . "<br/>";
             echo "Prezo:" . $fila['prezo'] . "<br/>";
-            echo "Foto:" . $fila['foto'] . "<br/>";
+            echo "Foto: <img src=' " . $fila['foto'] . "'> <br/>";
+            $identificador=$fila['modelo'];
+            echo "
+            <input type='radio' name='aluguer' value='$identificador'><br>
+             ";
             echo "<br/>";
         }
+        echo "<input type='submit' value='Alugar'/>
+            </form> ";
     }
 
     mysqli_close($mysqli_link);

@@ -10,7 +10,7 @@ if (mysqli_connect_errno())
     exit;
 }
 //consulta para comprobar el login indicando por parámetro usuario y contraseña, si no existe el usuario se envia al registro y si existe se le indica que la contraseña está mal
-
+mysqli_set_charset($mysqli_link,"utf8");
 $select_query = "SELECT usuario FROM usuario where usuario = '$usuario'";
 $usuario_comprobado = mysqli_query($mysqli_link, $select_query);
 $numfilas=$usuario_comprobado->num_rows;

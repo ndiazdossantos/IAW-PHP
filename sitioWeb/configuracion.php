@@ -30,6 +30,7 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
 </body>
 </html>
 
+
 <?php
 
 $user = $_SESSION["usuario"];
@@ -56,29 +57,31 @@ if (mysqli_connect_errno())
 }
 //comprobación de si los campos de registro están vacía
 
+mysqli_set_charset($mysqli_link,"utf8");
+
 if (!empty($contrasinal)){
 
-    echo 'Contrasinal actualizado';
+    echo '<br> Contrasinal actualizado';
     $update_query = "UPDATE usuario SET contrasinal='$contrasinal' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 
 if (!empty($nome)){
 
-    echo 'Nome actualizado';
+    echo '<br> Nome actualizado';
     $update_query = "UPDATE usuario SET nome='$nome' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 
 }
 
 if (!empty($direccion)){
-    echo 'Direccion actualizada';
+    echo '<br> Direccion actualizada';
     $update_query = "UPDATE usuario SET direccion='$direccion' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 }
 
 if (!empty($telefono)){
 
-    echo 'Telefono actualizado';
+    echo '<br> Telefono actualizado';
     $update_query = "UPDATE usuario SET telefono='$telefono' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 
@@ -86,7 +89,7 @@ if (!empty($telefono)){
 
 if (!empty($nifdni)){
 
-    echo 'Nif & DNI actualizado';
+    echo ' <br> Nif & DNI actualizado';
     $update_query = "UPDATE usuario SET nifdni='$nifdni' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 
@@ -94,7 +97,7 @@ if (!empty($nifdni)){
 
 if (!empty($email)){
 
-    echo 'Email actualizado';
+    echo '<br> Email actualizado';
     $update_query = "UPDATE usuario SET email='$email' where usuario='$user'";
     $update = mysqli_query($mysqli_link, $update_query);
 

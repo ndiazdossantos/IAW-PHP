@@ -15,6 +15,8 @@ if (mysqli_connect_errno())
         mysqli_connect_error());
     exit;
 }
+
+mysqli_set_charset($mysqli_link,"utf8");
 //comprobación de si los campos de registro están vacía
 if(empty($usuario)){
 
