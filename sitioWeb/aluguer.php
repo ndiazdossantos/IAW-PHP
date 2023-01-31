@@ -96,7 +96,7 @@ if(!isset($_SESSION["usuario"])){
                 if ($insert == false) {
                     echo "Erro ó alugar un modelo.";
                 } else {
-                    echo 'Aluguer completado';
+                    echo '<br>Aluguer completado';
                     echo "<br> Despois do aluguer temos $cantidade dispoñibles da marca $modelo";
                     header("refresh: 5; url = menu.php");
 

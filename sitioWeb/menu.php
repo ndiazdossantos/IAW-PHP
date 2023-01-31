@@ -19,11 +19,18 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
     <br><input value="Mostar vehículos dispoñibles para comprar" type="submit" name="venta" /><br>
     <br><input value= "Mostar vehículos dispoñibles para alugar" type="submit" name="aluguer" /><br>
 
+
+</form>
+
+<form name="formulario_devoltar" method="post" action="devoltar.php">
+    <input value= "Mostar vehículos para devoltar" type="submit" name="devoltar" /><br>
+
+
 </form>
 
 <form name="formulario_configuracion" method="post" action="configuracion.php">
 
-    <br><br><h2> Usuario </h2>
+    <br><h2> Usuario </h2>
 
     <input value="Modificar conta" type="submit" name="modificar" />
 </form>
@@ -35,7 +42,7 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
 
 //iniciamos la sesión
 #session_start(); ya iniciada arriba
-
+$user=$_SESSION["usuario"];
 //hacemos la conexión con el servicio mysql
 $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 if (mysqli_connect_errno())
@@ -99,9 +106,31 @@ if(!isset($_SESSION["usuario"])){
             </form> ";
     }
 
+    if(isset($_REQUEST['devoltar'])){
+
+        $select_query = "SELECT * FROM vehiculo_alugado where usuario = '$user'";
+        $result = mysqli_query($mysqli_link, $select_query);
+        $numfilas=$result->num_rows;
+
+        echo "<form name='formulario_devoltar' method='post' action='devoltar.php'>";
+        echo "<select name='alugado' >";
+        while ($fila = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $identificador=$fila['modelo'];
+            $cantidad=$fila['cantidade'];
+            echo " <option value='$identificador'>$identificador Cantidad[$cantidad]</option>";
+            echo "<br/>";
+        }
+        echo "</select>";
+        echo "<input type='submit' value='Devoltar'/>
+            </form> ";
+    }
+
+
     mysqli_close($mysqli_link);
 
 
 }
 
 ?>
+
+
