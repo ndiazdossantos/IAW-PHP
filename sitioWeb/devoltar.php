@@ -107,7 +107,7 @@ if(!isset($_SESSION["usuario"])){
                         echo "Erro ó alugar un modelo.";
                     } else {
                         echo '<br>Vehículo devolto';
-                        echo "<br> Despois de devoltar o vehículo quedánche alquilados $cantidad do modelo $identificador da marca $marcas";
+                        echo "<br> Despois de devoltar o vehículo quedánche alquilados $cantidad do modelo $identificador da marca $marca";
                         header("refresh: 5; url = menu.php");
                     }
 
