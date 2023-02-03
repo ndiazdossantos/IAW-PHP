@@ -27,6 +27,9 @@ if (mysqli_connect_errno())
     exit;
 }
 
+
+
+
 if(!isset($_SESSION["usuario"])){
 
     echo "No tienes la sesión iniciada, serás redireccionado para hacerlo ";
@@ -54,7 +57,7 @@ if(!isset($_SESSION["usuario"])){
             if($update == false){
                 echo "Erro o actualizar a cantidad de vehiculos dispoñibles para alugar";
             }else{
-                echo "Actualizada flota de vehículos";
+                echo "Actualizada flota de vehículos <br>";
             }
 
             $select_query2 = "SELECT * FROM vehiculo_alugado where modelo='$modeloNovo' and usuario='$user'";
