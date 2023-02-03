@@ -17,7 +17,6 @@ if(isset($_REQUEST['mercado'])){
 }
 
 
-
 //establecemos conexion
 $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 if (mysqli_connect_errno())
@@ -54,7 +53,7 @@ if(!isset($_SESSION["usuario"])){
             if($update == false){
                 echo "Erro o actualizar a cantidad de vehiculos en venta";
             }else{
-                echo " <br> Quédannos $cantidade $modelo de $marca dipoñibles, todo grazas ó proletariado. ";
+                echo " <br> Quédannos $cantidade $modelo de $marca dispoñibles, todo grazas ó proletariado. ";
                 header("refresh: 5; url = menu.php");
             }
 

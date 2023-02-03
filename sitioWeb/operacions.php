@@ -38,7 +38,7 @@ if (!isset($_SESSION["usuario"])) {
             echo "<b>Foto</b>: <img src=' " . $fila['foto'] . "'> <br/>";
             $identificador=$fila['modelo'];
             echo "
-            <input type='radio' name='aluguer' value='$identificador'><br>
+            <input type='radio' name='mercado' value='$identificador'><br>
              ";
             echo "<br/>";
             echo "----------------------------------------------------<br>";
