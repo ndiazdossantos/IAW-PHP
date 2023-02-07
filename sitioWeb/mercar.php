@@ -43,7 +43,7 @@ if(!isset($_SESSION["usuario"])){
         $marca = $valor['marca'];
         $foto = $valor['foto'];
         $descricion = $valor['descricion'];
-
+        $prezo = $valor['prezo'];
         if ($cantidade > 0) {
 
             $cantidade = $cantidade - 1;
@@ -55,6 +55,27 @@ if(!isset($_SESSION["usuario"])){
             }else{
                 echo " <br> Quédannos $cantidade $modelo de $marca dispoñibles, todo grazas ó proletariado. ";
                 header("refresh: 5; url = menu.php");
+
+                ## creación del recibo consultando también la información del comprador, ya que la del vehiculo la tenemos.s
+                $select_query = "SELECT * FROM usuario where usuario='$user'";
+                $result_user = mysqli_query($mysqli_link, $select_query);
+                $valor_user = mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+
+                $nome=$valor_user['nome'];
+                $direccion_user=$valor_user['direccion'];
+                $telefono_user=$valor_user['telefono'];
+                $nif_user=$valor_user['nifdni'];
+                $email_user=$valor_user['email'];
+
+                $data_server = date('y-m-d-H-i');
+                $data_recibo =date('y-m-d');
+                $arquivo = "$user"."_$data_server.txt";
+                $recibo = fopen("$arquivo", "w") ;
+                fputs($recibo,"RECIBO DA CONTA DO USUARIO $user O $data_recibo\n\n");
+                fputs($recibo,"DATOS COMPRADOR:\nNome: $nome\n NIF: $nif_user\nTelefono: $telefono_user\nEmail: $email_user\n\n");
+                fputs($recibo,"DATOS VEHÍCULO:\nMarca: $marca\n Modelo: $modelo\nPrezo: $prezo\nDescrición: $descricion\n");
+                fclose($recibo);
+
             }
 
         }else{
