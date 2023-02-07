@@ -18,15 +18,27 @@ $numfilas=$usuario_comprobado->num_rows;
 //mostramos resultado positivo o negativo del login
 if ($numfilas > 0) {
 
-    $select_query = "SELECT usuario FROM usuario where usuario = '$usuario' and contrasinal = '$contrasinal'";
+    $select_query = "SELECT * FROM usuario where usuario = '$usuario' and contrasinal = '$contrasinal'";
     $usuario_comprobado2 = mysqli_query($mysqli_link, $select_query);
     $numfilas2=$usuario_comprobado2->num_rows;
+    $valor = mysqli_fetch_array($usuario_comprobado2, MYSQLI_ASSOC);
+    #verificamos que no esté vació, si no dará error de fetch array
+    if(isset($valor['tipo_usuario'])){
+        $tipo_usuario=$valor['tipo_usuario'];
+    }
+
+
 
     if ($numfilas2 > 0) {
         echo "Se ha iniciado sesión correctamente, serás redireccionado al menú.";
         session_start();
         $_SESSION["usuario"]=$_REQUEST['usuario'];
-        header("refresh: 5; url = menu.php");
+        if($tipo_usuario=="a"){
+            header("refresh: 5; url = menu_admin.php");
+        }else{
+            header("refresh: 5; url = menu.php");
+        }
+
 
     } else {
         echo "<img src='images/dancing-happy.gif' border='0' width='300' height='300'>";
