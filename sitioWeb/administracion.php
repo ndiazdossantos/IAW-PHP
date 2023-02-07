@@ -15,9 +15,8 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 
         $select_query2 = "SELECT * FROM novo_rexistro";
         $result2 = mysqli_query($mysqli_link, $select_query2);
-        $valor = mysqli_fetch_array($result2, MYSQLI_ASSOC);
-        $numfilas2 = $result2->num_rows;
 
+     # iteramos por cada uno de los elementos que figuran en la tabla
         while ($valor = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
 
             $usuario= $valor['usuario'];
@@ -29,19 +28,28 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
             $email=$valor['email'];
 
             $select_query = "SELECT * FROM usuario where usuario='$usuario'";
-            $resultado = mysqli_query($mysqli_link, $select_query2);
+            $resultado = mysqli_query($mysqli_link, $select_query);
             $numfilas = $resultado->num_rows;
 
+            # si existe un registro con dicho nombre borramos de la tabla de pendientes
             if($numfilas>0){
-                echo "Xa existe o usuario, imposible inserción <br>";
+
+                echo "Xa existe o usuario, imposible inserción, eliminando usuario duplicado <b>[$usuario]</b><br>";
+                $delete_query = "DELETE FROM novo_rexistro where usuario='$usuario'";
+                $delete = mysqli_query($mysqli_link, $delete_query);
+
+            # si no existe el registro eliminamos de pendientes y añadimos a usuarios
             }else{
+                echo "Usuario indexado correctamente<b>[$usuario]</b><br>";
                 $insert_query = "INSERT INTO usuario (usuario, contrasinal, nome, direccion, telefono, nifdni, email, tipo_usuario) VALUES ('$usuario', '$contrasinal', '$nome', '$direccion', '$telefono', '$nifdni', '$email','u')";
                 $insert = mysqli_query($mysqli_link, $insert_query);
-                $delete_query = "DELETE FROM novo_usuario where usuario='$usuario'";
+                $delete_query = "DELETE FROM novo_rexistro where usuario='$usuario'";
                 $delete = mysqli_query($mysqli_link, $delete_query);
 
             }
 
         }
+        echo "<br><b>Usuarios verificados, actualizada tabla de pendentes, redireccionando a panel de administracion</b><br>";
+        header("refresh: 5; url = menu_admin.php");
     }
     mysqli_close($mysqli_link);
