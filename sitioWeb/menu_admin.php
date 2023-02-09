@@ -19,6 +19,10 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
         <input value="Admisións" type="submit" name="admitir" />
     </form>
 
+      <br><button onclick=location.href="administracion.html">Engadir vehiculo</button><br>
+
+
+
     </body>
     </html>
 
