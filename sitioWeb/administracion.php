@@ -69,20 +69,26 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
                 $numfilas=$result_user->num_rows;
 
                 if(isset($resultado['cantidade'])){
+
                     $cantidad=$resultado['cantidade'];
+
                 }
 
                 if($numfilas>0){
+
                     $update_query = "UPDATE vehiculo_aluguer SET cantidade=cantidade+$cantidade where modelo='$modelo'";
                     $update = mysqli_query($mysqli_link, $update_query);
                     $total=$cantidade+$cantidad;
-                    echo "Engadíronse <b>$cantidade</b> vehiculos do modelo <b>$modelo</b> da marca <b>$marca</b>, tes un total de $total. ";
+                    echo "Engadíronse <b>$cantidade</b> vehiculos do modelo <b>$modelo</b> da marca <b>$marca</b>, tes un total de <b>$total.</b> ";
+                    header("refresh: 5; url = menu_admin.php");
 
                 }else{
 
                     $insert_query = "INSERT INTO `vehiculo_aluguer`(`modelo`, `cantidade`, `descricion`, `marca`,`prezo`, `foto`) VALUES ('$modelo','$cantidade','$descricion','$marca',$prezo,'$foto')";
                     $insert = mysqli_query($mysqli_link, $insert_query);
                     echo "Non existían vehículos do modelo <b>$modelo</b> da marca <b>$marca</b>, engadiuse a cantidade <b>$cantidade</b> ó stock.";
+                    header("refresh: 5; url = menu_admin.php");
+
                 }
 
 
