@@ -38,7 +38,7 @@ if(!isset($_SESSION["usuario"])){
 
             echo"----------------------------------------------------<br>";
         }
-
+        echo"  <button onclick=location.href='menu.php'>Volver</button>";
 
     }
     if (isset($_REQUEST['aluguer'])) {
@@ -58,7 +58,9 @@ if(!isset($_SESSION["usuario"])){
 
             echo "----------------------------------------------------<br>";
         }
+        echo"  <button onclick=location.href='menu.php'>Volver</button>";
     }
+
     mysqli_close($mysqli_link);
 
 

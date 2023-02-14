@@ -46,6 +46,7 @@ if(!isset($_SESSION["usuario"])){
         echo "</select>";
         echo "<input type='submit' value='Devoltar [1]'/>
             </form> ";
+        echo"  <button onclick=location.href='menu.php'>Volver</button>";
     }
 // si temos un vehiculo alugado do mesmo modelo e cliente procedemos a actualizalo
         if(isset($_REQUEST['devolta'])) {

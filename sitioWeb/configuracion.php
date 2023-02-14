@@ -26,7 +26,8 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
     <input type="text" name="email_novo" value="">
 
     <input type="submit"/>
-
+</form>
+<button onclick=location.href='menu.php'>Volver</button>
 </body>
 </html>
 

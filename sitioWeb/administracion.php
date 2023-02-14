@@ -90,7 +90,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
                     header("refresh: 5; url = menu_admin.php");
 
                 }
-
+        mysqli_close($mysqli_link);
 
 
     }
@@ -131,7 +131,9 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
             header("refresh: 5; url = menu_admin.php");
 
         }
+        mysqli_close($mysqli_link);
     }
+
     if (isset($_REQUEST['eliminar_aluguer'])) {
 
         $modelo = $_REQUEST['modelo'];
@@ -177,7 +179,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
             echo "Non existe stock do modelo $modelo";
             header("refresh: 5; url = menu_admin.php");
         }
-
+        mysqli_close($mysqli_link);
     }
 
 if (isset($_REQUEST['eliminar_venta'])) {
@@ -225,7 +227,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         echo "Non existe stock do modelo $modelo";
         header("refresh: 5; url = menu_admin.php");
     }
-
+    mysqli_close($mysqli_link);
 }
 
 ?>

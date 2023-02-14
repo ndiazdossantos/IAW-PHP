@@ -45,7 +45,7 @@ if (!isset($_SESSION["usuario"])) {
         }
         echo "<input type='submit' value='Mercar'/>
             </form> ";
-
+        echo"  <button onclick=location.href='menu.php'>Volver</button>";
     }
     if(isset($_REQUEST['aluguer'])){
 
@@ -71,6 +71,7 @@ if (!isset($_SESSION["usuario"])) {
         }
         echo "<input type='submit' value='Alugar'/>
             </form> ";
+        echo"  <button onclick=location.href='menu.php'>Volver</button>";
     }
 
     mysqli_close($mysqli_link);

@@ -18,7 +18,7 @@ $user = $_SESSION["usuario"];
     <input type='text' name='cantidade' value=''>
     <input type='submit' name="eliminar_venta"/>
   </form>
-  <br>
+  <button onclick=location.href="menu_admin.php">Volver</button>
 
 </body>
 </html>
