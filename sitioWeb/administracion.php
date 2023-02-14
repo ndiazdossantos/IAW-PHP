@@ -65,7 +65,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 
                 $select_query = "SELECT * FROM vehiculo_aluguer where modelo='$modelo'";
                 $result_user = mysqli_query($mysqli_link, $select_query);
-                $fila = $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+                $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
                 $numfilas=$result_user->num_rows;
 
                 if(isset($resultado['cantidade'])){
@@ -106,7 +106,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 
         $select_query = "SELECT * FROM vehiculo_venda where modelo='$modelo'";
         $result_user = mysqli_query($mysqli_link, $select_query);
-        $fila = $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+        $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
         $numfilas=$result_user->num_rows;
 
         if(isset($resultado['cantidade'])){
@@ -131,5 +131,101 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
             header("refresh: 5; url = menu_admin.php");
 
         }
+    }
+    if (isset($_REQUEST['eliminar_aluguer'])) {
+
+        $modelo = $_REQUEST['modelo'];
+        $cantidade = $_REQUEST['cantidade'];
+
+        $select_query = "SELECT * FROM vehiculo_aluguer where modelo='$modelo'";
+        $result_user = mysqli_query($mysqli_link, $select_query);
+        $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+        $numfilas=$result_user->num_rows;
+
+
+        if(isset($resultado['marca'])){
+            $marca=$resultado['marca'];
+        }
+
+        if(isset($resultado['cantidade'])){
+            $cantidad=$resultado['cantidade'];
+        }
+
+        if($numfilas>0){
+
+            $update_query = "UPDATE vehiculo_aluguer SET cantidade=cantidade-$cantidade where modelo='$modelo'";
+            $update = mysqli_query($mysqli_link, $update_query);
+            $total=$cantidad-$cantidade;
+            echo "Retiráronse <b>$cantidade</b> vehiculos do modelo <b>$modelo</b> da marca <b>$marca</b>, tes un total de <b>$total.</b> ";
+
+            $select_query = "SELECT * FROM vehiculo_aluguer where modelo='$modelo'";
+            $resultado_aluguer = mysqli_query($mysqli_link, $select_query);
+            $result=mysqli_fetch_array($resultado_aluguer, MYSQLI_ASSOC);
+
+            if($result['cantidade']>0){
+                header("refresh: 5; url = menu_admin.php");
+            }else{
+                $delete_query = "DELETE FROM vehiculo_aluguer where modelo='$modelo'";
+                $delete = mysqli_query($mysqli_link, $delete_query);
+                echo "<br>Como xa non quedan vehículos en stock borramos o modelo $modelo";
+                header("refresh: 5; url = menu_admin.php");
+            }
+
+
+        }else{
+
+            echo "Non existe stock do modelo $modelo";
+            header("refresh: 5; url = menu_admin.php");
+        }
 
     }
+
+if (isset($_REQUEST['eliminar_venta'])) {
+
+    $modelo = $_REQUEST['modelo'];
+    $cantidade = $_REQUEST['cantidade'];
+
+    $select_query = "SELECT * FROM vehiculo_venda where modelo='$modelo'";
+    $result_user = mysqli_query($mysqli_link, $select_query);
+    $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+    $numfilas=$result_user->num_rows;
+
+
+    if(isset($resultado['marca'])){
+        $marca=$resultado['marca'];
+    }
+
+    if(isset($resultado['cantidade'])){
+        $cantidad=$resultado['cantidade'];
+    }
+
+    if($numfilas>0){
+
+        $update_query = "UPDATE vehiculo_venda SET cantidade=cantidade-$cantidade where modelo='$modelo'";
+        $update = mysqli_query($mysqli_link, $update_query);
+        $total=$cantidad-$cantidade;
+        echo "Retiráronse <b>$cantidade</b> vehiculos do modelo <b>$modelo</b> da marca <b>$marca</b>, tes un total de <b>$total.</b> ";
+
+        $select_query = "SELECT * FROM vehiculo_venda where modelo='$modelo'";
+        $resultado_aluguer = mysqli_query($mysqli_link, $select_query);
+        $result=mysqli_fetch_array($resultado_aluguer, MYSQLI_ASSOC);
+
+        if($result['cantidade']>0){
+            header("refresh: 5; url = menu_admin.php");
+        }else{
+            $delete_query = "DELETE FROM vehiculo_venda where modelo='$modelo'";
+            $delete = mysqli_query($mysqli_link, $delete_query);
+            echo "<br>Como xa non quedan vehículos en stock borramos o modelo $modelo";
+            header("refresh: 5; url = menu_admin.php");
+        }
+
+
+    }else{
+
+        echo "Non existe stock do modelo $modelo";
+        header("refresh: 5; url = menu_admin.php");
+    }
+
+}
+
+?>
