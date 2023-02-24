@@ -270,4 +270,127 @@ if (isset($_REQUEST['eliminar_venta'])) {
         echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
     }
 
+    if(isset($_REQUEST['modificar_venta'])){
+
+        $modelo = $_REQUEST['modelo'];
+        $cantidade = $_REQUEST['cantidade'];
+        $descricion = $_REQUEST['descricion'];
+        $marca = $_REQUEST['marca'];
+        $prezo= $_REQUEST['prezo'];
+        $foto = $_REQUEST['foto'];
+
+        $select_query = "SELECT * FROM vehiculo_venda where modelo='$modelo'";
+        $result_user = mysqli_query($mysqli_link, $select_query);
+        $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+        $numfilas=$result_user->num_rows;
+
+        if($numfilas>0){
+
+            if (!empty($cantidade)) {
+
+                echo '<br> Cantidade actualizada';
+                $update_query = "UPDATE vehiculo_venda SET cantidade='$cantidade' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+            }
+
+            if (!empty($descricion)){
+
+                echo '<br>Descrición actualizada';
+                $update_query = "UPDATE vehiculo_venda SET descricion='$descricion' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+            if (!empty($marca)){
+                echo '<br> Marca actualizada';
+                $update_query = "UPDATE vehiculo_venda SET marca='$marca' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+            }
+
+            if (!empty($prezo)){
+
+                echo '<br> Prezo actualizado';
+                $update_query = "UPDATE vehiculo_venda SET prezo='$prezo' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+            if (!empty($foto)){
+
+                echo ' <br> Foto actualizada';
+                $update_query = "UPDATE vehiculo_venda SET foto='$foto' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+        }else{
+
+            echo "O modelo $modelo non existe, asegúrate de escribilo correctamente o comprobar que hai stock";
+        }
+        echo "<br> Operacións realizadas, redireccionando.";
+        header("refresh: 5; url = menu_admin.php");
+        mysqli_close($mysqli_link);
+    }
+
+    if(isset($_REQUEST['modificar_aluguer'])){
+
+        $modelo = $_REQUEST['modelo'];
+        $cantidade = $_REQUEST['cantidade'];
+        $descricion = $_REQUEST['descricion'];
+        $marca = $_REQUEST['marca'];
+        $prezo= $_REQUEST['prezo'];
+        $foto = $_REQUEST['foto'];
+
+        $select_query = "SELECT * FROM vehiculo_aluguer where modelo='$modelo'";
+        $result_user = mysqli_query($mysqli_link, $select_query);
+        $resultado=mysqli_fetch_array($result_user, MYSQLI_ASSOC);
+        $numfilas=$result_user->num_rows;
+
+        if($numfilas>0){
+
+            if (!empty($cantidade)) {
+
+                echo '<br> Cantidade actualizada';
+                $update_query = "UPDATE vehiculo_aluguer SET cantidade='$cantidade' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+            }
+
+            if (!empty($descricion)){
+
+                echo '<br>Descrición actualizada';
+                $update_query = "UPDATE vehiculo_aluguer SET descricion='$descricion' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+            if (!empty($marca)){
+                echo '<br> Marca actualizada';
+                $update_query = "UPDATE vehiculo_aluguer SET marca='$marca' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+            }
+
+            if (!empty($prezo)){
+
+                echo '<br> Prezo actualizado';
+                $update_query = "UPDATE vehiculo_aluguer SET prezo='$prezo' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+            if (!empty($foto)){
+
+                echo ' <br> Foto actualizada';
+                $update_query = "UPDATE vehiculo_aluguer SET foto='$foto' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+
+            }
+
+        }else{
+
+            echo "O modelo $modelo non existe, asegúrate de escribilo correctamente o comprobar que hai stock";
+        }
+        echo "<br> Operacións realizadas, redireccionando.";
+        header("refresh: 5; url = menu_admin.php");
+        mysqli_close($mysqli_link);
+    }
 ?>

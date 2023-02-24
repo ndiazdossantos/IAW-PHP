@@ -26,6 +26,8 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
       <br><h2> Funcións </h2>
       <br><button onclick=location.href="engadir_aluguer.php">Engadir vehiculo aluguer</button><br>
       <br><button onclick=location.href="engadir_venta.php">Engadir vehiculo venta</button><br>
+      <br><button onclick=location.href="modificar_venta.php">Modificar vehiculo en venta</button><br>
+      <br><button onclick=location.href="modificar_aluguer.php">Modificar vehiculo en aluguer</button><br>
       <br><button onclick=location.href="eliminar_aluguer.php">Eliminar vehiculo en aluger</button><br>
       <br><button onclick=location.href="eliminar_venta.php">Eliminar vehiculo en venta</button><br>
 
