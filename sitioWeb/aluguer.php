@@ -85,7 +85,7 @@ if(!isset($_SESSION["usuario"])){
 
                 } else {
                     echo 'Aluguer completado';
-                    echo "<br> Despois do aluguer temos $cantidade dispoñibles da marca $modelo";
+                    echo "<br> Despois do aluguer temos $cantidade dispoñibles do modelo $modelo";
                     header("refresh: 5; url = menu.php");
 
                 }

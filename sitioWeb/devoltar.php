@@ -124,6 +124,7 @@ if(!isset($_SESSION["usuario"])){
                     echo "Erro ó borrar o último vehiculo alugado do rexistro";
                 }else{
                     echo"<br>Último vehiculo alugado, borrado correctamente";
+                    header("refresh: 5; url = menu.php");
                 }
 
                 $select_query2 = "SELECT * FROM vehiculo_devolto where modelo='$identificador' and usuario='$user'";
@@ -148,6 +149,7 @@ if(!isset($_SESSION["usuario"])){
                         echo "Erro o actualizar a cantidad de vehiculos devoltos";
                     } else {
                         echo "<br>Vehiculo devolto actualizado correctamente";
+                        header("refresh: 5; url = menu.php");
                     }
 
 // se non existe rexistramos este vehiculo devolto

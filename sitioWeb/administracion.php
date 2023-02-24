@@ -393,4 +393,45 @@ if (isset($_REQUEST['eliminar_venta'])) {
         header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
     }
+
+    if (isset($_REQUEST['reponer_aluguer'])) {
+
+        $select_query2 = "SELECT * FROM vehiculo_devolto";
+        $result2 = mysqli_query($mysqli_link, $select_query2);
+
+        # iteramos por cada uno de los elementos que figuran en la tabla
+        while ($valor = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+
+            $modelo= $valor['modelo'];
+            $cantidade= $valor['cantidade'];
+
+            $select_query = "SELECT * FROM vehiculo_aluguer where modelo='$modelo'";
+            $resultado = mysqli_query($mysqli_link, $select_query);
+            $numfilas = $resultado->num_rows;
+            $valor_aluguer = mysqli_fetch_array($resultado, MYSQLI_ASSOC);
+
+            $cantidade_aluguer = $valor_aluguer['cantidade'];
+
+            # si existe un registro con dicho nombre borramos de la tabla de pendientes
+            if($numfilas>0){
+
+                $cantidade_total=$cantidade+$cantidade_aluguer;
+                echo "Engadido o stock $cantidade do modelo <b>$modelo</b><br>";
+                echo "Eliminados de vehículos devoltos $cantidade_aluguer do modelo <b>$modelo </b><br>";
+                $update_query = "UPDATE vehiculo_aluguer SET cantidade='$cantidade_total' where modelo='$modelo'";
+                $update = mysqli_query($mysqli_link, $update_query);
+                $delete_query = "DELETE FROM vehiculo_devolto where modelo='$modelo'";
+                $delete = mysqli_query($mysqli_link, $delete_query);
+
+            }else{
+
+                echo "Xa non existe dito modeo en aluguer, non podemos añadilos de novo, debes engadir o modelo novamente e posteriormente aprobar o movemento de devoltos";
+
+            }
+
+        }
+        echo "<br><b>Actualizado stock de vehículos aluguer cos vehículos devoltos, redireccionando a panel de administracion</b><br>";
+        #header("refresh: 5; url = menu_admin.php");
+        mysqli_close($mysqli_link);
+}
 ?>

@@ -21,6 +21,7 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
         <br><h2> Inventario </h2>
         <br><input value="Mostrar vehículos en venta" type="submit" name="vehiculo_venta" /><br>
         <br><input value="Mostrar vehículos en aluger" type="submit" name="vehiculo_aluger" /><br>
+        <br><input value="Poñer vehiculos devoltos dispoñibles" type="submit" name="reponer_aluguer" /><br>
 
     </form>
       <br><h2> Funcións </h2>
