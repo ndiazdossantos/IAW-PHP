@@ -230,4 +230,44 @@ if (isset($_REQUEST['eliminar_venta'])) {
     mysqli_close($mysqli_link);
 }
 
+    if (isset($_REQUEST['vehiculo_venta'])){
+
+        $select_query2 = "SELECT * FROM vehiculo_venda";
+        $result2 = mysqli_query($mysqli_link, $select_query2);
+        $numfilas2=$result2->num_rows;
+
+        echo "<br><h2> Vehículos en venta</h2><br>";
+        while ($fila = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+            echo "<b>Modelo</b>:" . $fila['modelo'] . "<br/>";
+            echo "<b>Cantidade</b>:" . $fila['cantidade'] . "<br/>";
+            echo "<b>Descrición</b>:" . $fila['descricion'] . "<br/>";
+            echo "<b>Marca</b>:" . $fila['marca'] . "<br/>";
+            echo "<b>Prezo</b>:" . $fila['prezo'] . "<br/>";
+            echo "<b>Foto</b>: <img src=' " . $fila['foto'] . "'> <br/>";
+
+            echo"----------------------------------------------------<br>";
+        }
+        echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
+
+    }
+    if (isset($_REQUEST['vehiculo_aluger'])) {
+
+        $select_query2 = "SELECT * FROM vehiculo_aluguer";
+        $result2 = mysqli_query($mysqli_link, $select_query2);
+        $numfilas2 = $result2->num_rows;
+
+        echo "<br><h2> Vehículos en aluguer</h2><br>";
+        while ($fila = mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
+            echo "<b>Modelo</b>:" . $fila['modelo'] . "<br/>";
+            echo "<b>Cantidade</b>:" . $fila['cantidade'] . "<br/>";
+            echo "<b>Descrición</b>:" . $fila['descricion'] . "<br/>";
+            echo "<b>Marca</b>:" . $fila['marca'] . "<br/>";
+            echo "<b>Prezo</b>:" . $fila['prezo'] . "<br/>";
+            echo "<b>Foto</b>: <img src=' " . $fila['foto'] . "'> <br/>";
+
+            echo "----------------------------------------------------<br>";
+        }
+        echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
+    }
+
 ?>
