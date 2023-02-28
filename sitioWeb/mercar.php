@@ -75,7 +75,7 @@ if(!isset($_SESSION["usuario"])){
                 $recibo = fopen("$arquivo", "w") ;
                 fputs($recibo,"RECIBO DA CONTA DO USUARIO $user O $data_recibo\n\n");
                 fputs($recibo,"DATOS COMPRADOR:\nNome: $nome\nNIF: $nif_user\nTelefono: $telefono_user\nEmail: $email_user\n\n");
-                fputs($recibo,"DATOS VEHÍCULO:\nMarca: $marca\n Modelo: $modelo\nPrezo: $prezo\nDescrición: $descricion\n");
+                fputs($recibo,"DATOS VEHÍCULO:\nMarca: $marca\nModelo: $modelo\nPrezo: $prezo\nDescrición: $descricion\n");
                 fclose($recibo);
 
                 header("refresh: 5; url = menu.php");
