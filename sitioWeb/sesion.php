@@ -34,8 +34,10 @@ if ($numfilas > 0) {
         session_start();
         $_SESSION["usuario"]=$_REQUEST['usuario'];
         if($tipo_usuario=="a"){
+            mysqli_close($mysqli_link);
             header("refresh: 5; url = menu_admin.php");
         }else{
+            mysqli_close($mysqli_link);
             header("refresh: 5; url = menu.php");
         }
 
@@ -43,6 +45,7 @@ if ($numfilas > 0) {
     } else {
         echo "<img src='images/dancing-happy.gif' border='0' width='300' height='300'>";
         echo " <br> O contrasinal no coincide, serás redirixido en 5 segundos. ";
+        mysqli_close($mysqli_link);
         header("refresh: 5; url = index.html");
     }
 
@@ -50,6 +53,7 @@ if ($numfilas > 0) {
 } else {
     echo "<img src='images/rick-and.gif' border='0' width='300' height='300'>";
     echo " <br> Non existe dicha conta, serás redirixido en 5 segundos ó rexistro. ";
+    mysqli_close($mysqli_link);
     header("refresh: 5; url = rexistro.html");
 
 

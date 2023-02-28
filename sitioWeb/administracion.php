@@ -218,6 +218,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
             $delete_query = "DELETE FROM vehiculo_venda where modelo='$modelo'";
             $delete = mysqli_query($mysqli_link, $delete_query);
             echo "<br>Como xa non quedan vehículos en stock borramos o modelo $modelo";
+            mysqli_close($mysqli_link);
             header("refresh: 5; url = menu_admin.php");
         }
 
@@ -225,6 +226,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
     }else{
 
         echo "Non existe stock do modelo $modelo";
+        mysqli_close($mysqli_link);
         header("refresh: 5; url = menu_admin.php");
     }
     mysqli_close($mysqli_link);
@@ -328,8 +330,9 @@ if (isset($_REQUEST['eliminar_venta'])) {
             echo "O modelo $modelo non existe, asegúrate de escribilo correctamente o comprobar que hai stock";
         }
         echo "<br> Operacións realizadas, redireccionando.";
-        header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
+        header("refresh: 5; url = menu_admin.php");
+
     }
 
     if(isset($_REQUEST['modificar_aluguer'])){
@@ -390,8 +393,9 @@ if (isset($_REQUEST['eliminar_venta'])) {
             echo "O modelo $modelo non existe, asegúrate de escribilo correctamente o comprobar que hai stock";
         }
         echo "<br> Operacións realizadas, redireccionando.";
-        header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
+        header("refresh: 5; url = menu_admin.php");
+
     }
 
     if (isset($_REQUEST['reponer_aluguer'])) {
@@ -431,7 +435,8 @@ if (isset($_REQUEST['eliminar_venta'])) {
 
         }
         echo "<br><b>Actualizado stock de vehículos aluguer cos vehículos devoltos, redireccionando a panel de administracion</b><br>";
-        #header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
+        header("refresh: 5; url = menu_admin.php");
+
 }
 ?>

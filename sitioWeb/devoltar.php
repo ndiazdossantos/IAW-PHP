@@ -163,6 +163,7 @@ if(!isset($_SESSION["usuario"])){
                     } else {
                         echo '<br>Vehículo devolto';
                         echo "<br> Despois de devoltar o vehículo quedánche alquilados $cantidad do modelo $identificador da marca $marca";
+                        mysqli_close($mysqli_link);
                         header("refresh: 5; url = menu.php");
                     }
 

@@ -60,6 +60,7 @@ if(empty($usuario)){
 
     if (mysqli_query($mysqli_link, $insert_query)) {
         echo 'Registro completado, regresando a la página principal';
+        mysqli_close($mysqli_link);
         header("refresh: 5; url = index.html");
 
     }
