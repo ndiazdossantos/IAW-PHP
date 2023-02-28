@@ -66,6 +66,8 @@ $user = $_SESSION["usuario"];
         $update_query = "UPDATE usuario SET contrasinal='$contrasinal' where usuario='$user'";
         $update = mysqli_query($mysqli_link, $update_query);
 
+        }
+
     if (!empty($nome)){
 
         echo '<br> Nome actualizado';
@@ -104,8 +106,6 @@ $user = $_SESSION["usuario"];
 
     }
 
-        mysqli_close($mysqli_link);
-    }
-
+mysqli_close($mysqli_link);
 
 ?>

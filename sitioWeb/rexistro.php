@@ -64,8 +64,6 @@ if(empty($usuario)){
         header("refresh: 5; url = index.html");
 
     }
-
-    mysqli_close($mysqli_link);
 }
 
 

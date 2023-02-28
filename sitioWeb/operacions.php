@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 echo "<br><div align='right'><b>Usuario:</b> " . $_SESSION["usuario"] . "</div><br>";
 $user = $_SESSION["usuario"];

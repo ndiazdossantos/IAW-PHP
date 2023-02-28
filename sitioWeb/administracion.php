@@ -51,8 +51,9 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 
         }
         echo "<br><b>Usuarios verificados, actualizada tabla de pendentes, redireccionando a panel de administracion</b><br>";
-        header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
+        header("refresh: 5; url = menu_admin.php");
+
     }
 #recibimos parámetros del formulario engadir_aluger.php
     if (isset($_REQUEST['vehiculo'])) {
@@ -230,7 +231,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         mysqli_close($mysqli_link);
         header("refresh: 5; url = menu_admin.php");
     }
-    mysqli_close($mysqli_link);
+
 }
 #recibimos submit desde menu_admin.php
     if (isset($_REQUEST['vehiculo_venta'])){

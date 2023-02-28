@@ -11,7 +11,7 @@ $user = $_SESSION["usuario"];
 </head>
 <body>
 <h2>Modificar vehículos en venta</h2>
-<form name='formulario_vehiculo' method='post' action='administracion.php'>
+<form name='formulario_vehiculo' method='POST' action='administracion.php'>
     <p text-align='center'>Modelo</p>
     <input type='text' name='modelo' value=''>
     <p text-align='center'>Cantidade</p>

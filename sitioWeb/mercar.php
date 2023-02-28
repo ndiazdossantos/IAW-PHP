@@ -74,11 +74,10 @@ if(!isset($_SESSION["usuario"])){
                 $arquivo = "$user"."_$data_server.txt";
                 $recibo = fopen("$arquivo", "w") ;
                 fputs($recibo,"RECIBO DA CONTA DO USUARIO $user O $data_recibo\n\n");
-                fputs($recibo,"DATOS COMPRADOR:\nNome: $nome\n NIF: $nif_user\nTelefono: $telefono_user\nEmail: $email_user\n\n");
+                fputs($recibo,"DATOS COMPRADOR:\nNome: $nome\nNIF: $nif_user\nTelefono: $telefono_user\nEmail: $email_user\n\n");
                 fputs($recibo,"DATOS VEHÍCULO:\nMarca: $marca\n Modelo: $modelo\nPrezo: $prezo\nDescrición: $descricion\n");
                 fclose($recibo);
 
-                mysqli_close($mysqli_link);
                 header("refresh: 5; url = menu.php");
 
             }
@@ -87,7 +86,6 @@ if(!isset($_SESSION["usuario"])){
 
             echo "<img src='images/dancing-vladimir-putin.gif' border='0' width='300' height='300'>";
             echo " <br> Non nos quedan $modelo de $marca dipoñibles, todo é culpa de Rusia. ";
-            mysqli_close($mysqli_link);
             header("refresh: 5; url = menu.php");
 
 
@@ -98,9 +96,5 @@ if(!isset($_SESSION["usuario"])){
 }
 
 mysqli_set_charset($mysqli_link,"utf8");
-
 mysqli_close($mysqli_link);
-
-
-
 ?>

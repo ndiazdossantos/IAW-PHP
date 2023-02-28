@@ -56,10 +56,6 @@ if ($numfilas > 0) {
     mysqli_close($mysqli_link);
     header("refresh: 5; url = rexistro.html");
 
-
-
 }
-mysqli_close($mysqli_link);
-
 
 ?>
