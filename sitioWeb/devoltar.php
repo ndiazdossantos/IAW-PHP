@@ -172,12 +172,6 @@ if(!isset($_SESSION["usuario"])){
             }
 
         }
-
-
-
-    mysqli_close($mysqli_link);
-
-
 }
 
 ?>
