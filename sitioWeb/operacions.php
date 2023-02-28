@@ -43,7 +43,10 @@ if (!isset($_SESSION["usuario"])) {
         }
         echo "<input type='submit' value='Mercar'/>
             </form> ";
-        echo"  <button onclick=location.href='menu.php'>Volver</button>";
+        echo"<form name='formulario_volver' method='POST' action='menu.php'>
+             <input type='submit' value='Volver'/>
+             </form>";
+
     }
     if(isset($_REQUEST['aluguer'])){
 
@@ -69,7 +72,10 @@ if (!isset($_SESSION["usuario"])) {
         }
         echo "<input type='submit' value='Alugar'/>
             </form> ";
-        echo"  <button onclick=location.href='menu.php'>Volver</button>";
+        echo"<form name='formulario_volver' method='POST' action='menu.php'>
+             <input type='submit' value='Volver'/>
+             </form>";
+
     }
 
     mysqli_close($mysqli_link);

@@ -26,7 +26,11 @@ $user = $_SESSION["usuario"];
     <input type='text' name='foto' value=''>
     <input type='submit' name="vehiculo"/>
   </form>
-  <button onclick=location.href="menu_admin.php">Volver</button>
+
+  <form name='formulario_volver' method='POST' action='menu_admin.php'>
+      <input type='submit' value="Volver"/>
+  </form>
+
 
 </body>
 </html>

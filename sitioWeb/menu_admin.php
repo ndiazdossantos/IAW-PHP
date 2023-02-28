@@ -25,12 +25,30 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
 
     </form>
       <br><h2> Funcións </h2>
-      <br><button onclick=location.href="engadir_aluguer.php">Engadir vehiculo aluguer</button><br>
-      <br><button onclick=location.href="engadir_venta.php">Engadir vehiculo venta</button><br>
-      <br><button onclick=location.href="modificar_venta.php">Modificar vehiculo en venta</button><br>
-      <br><button onclick=location.href="modificar_aluguer.php">Modificar vehiculo en aluguer</button><br>
-      <br><button onclick=location.href="eliminar_aluguer.php">Eliminar vehiculo en aluger</button><br>
-      <br><button onclick=location.href="eliminar_venta.php">Eliminar vehiculo en venta</button><br>
+
+    <form name='engadir_aluguer' method='POST' action='engadir_aluguer.php'>
+        <input type='submit' value="Engadir vehiculo aluguer"/>
+    </form>
+
+    <form name='engadir_venta' method='POST' action='engadir_venta.php'>
+        <input type='submit' value="Engadir vehiculo venta"/>
+    </form>
+
+    <form name='modificar_venta' method='POST' action='modificar_venta.php'>
+        <input type='submit' value="Modificar vehiculo en venta"/>
+    </form>
+
+    <form name='modificar_aluguer' method='POST' action='modificar_aluguer.php'>
+        <input type='submit' value="Modificar vehiculo en aluguer"/>
+    </form>
+
+    <form name='eliminar_aluguer' method='POST' action='eliminar_aluguer.php'>
+        <input type='submit' value="Eliminar vehiculo en aluger"/>
+    </form>
+
+    <form name='eliminar_aluguer' method='POST' action='eliminar_venta.php'>
+        <input type='submit' value="Eliminar vehiculo en venta"/>
+    </form>
 
     </body>
     </html>
