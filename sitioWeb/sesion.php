@@ -28,7 +28,7 @@ if ($numfilas > 0) {
     }
 
 
-
+# si existe el usuario (el resultado es 1) se inicia sesión, posteriormente comprobamos el tipo de usuario.
     if ($numfilas2 > 0) {
         echo "Se ha iniciado sesión correctamente, serás redireccionado al menú.";
         session_start();
@@ -41,7 +41,7 @@ if ($numfilas > 0) {
             header("refresh: 5; url = menu.php");
         }
 
-
+# no coincide la contraseña
     } else {
         echo "<img src='images/dancing-happy.gif' border='0' width='300' height='300'>";
         echo " <br> O contrasinal no coincide, serás redirixido en 5 segundos. ";
@@ -49,7 +49,7 @@ if ($numfilas > 0) {
         header("refresh: 5; url = index.html");
     }
 
-
+#no existe el usuario por lo tanto redirige al registor
 } else {
     echo "<img src='images/rick-and.gif' border='0' width='300' height='300'>";
     echo " <br> Non existe dicha conta, serás redirixido en 5 segundos ó rexistro. ";

@@ -105,10 +105,8 @@ if(!isset($_SESSION["usuario"])){
                     mysqli_close($mysqli_link);
                     header("refresh: 5; url = menu.php");
 
-
             }
         }
-
 
         }else{
 

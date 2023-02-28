@@ -17,7 +17,7 @@ if (mysqli_connect_errno())
 }
 
 mysqli_set_charset($mysqli_link,"utf8");
-//comprobación de si los campos de registro están vacía
+//comprobación de si los campos del formulario están vacíos, en caso de estarlo redirige nuevamente al formulario de registro
 if(empty($usuario)){
 
     echo " <br> Campo usuario vacío, debes completarlo ";

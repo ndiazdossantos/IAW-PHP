@@ -11,6 +11,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
             mysqli_connect_error());
         exit;
     }
+    #recibimos submit desde menu_admin.php
     if (isset($_REQUEST['admitir'])) {
 
         $select_query2 = "SELECT * FROM novo_rexistro";
@@ -53,7 +54,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
         header("refresh: 5; url = menu_admin.php");
         mysqli_close($mysqli_link);
     }
-
+#recibimos parámetros del formulario engadir_aluger.php
     if (isset($_REQUEST['vehiculo'])) {
 
                 $modelo = $_REQUEST['modelo'];
@@ -94,7 +95,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
 
 
     }
-
+#recibimos parámetros del formulario engadir_venta.php
     if(isset($_REQUEST['venta'])){
 
         $modelo = $_REQUEST['modelo'];
@@ -133,7 +134,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
         }
         mysqli_close($mysqli_link);
     }
-
+#recibimos parámetros desde el formulario eliminar_aluguer.php
     if (isset($_REQUEST['eliminar_aluguer'])) {
 
         $modelo = $_REQUEST['modelo'];
@@ -181,7 +182,7 @@ $mysqli_link = mysqli_connect("127.0.0.1", "root","", "frota");
         }
         mysqli_close($mysqli_link);
     }
-
+#recibimos parámetros desde el formulario eliminar_venta.php
 if (isset($_REQUEST['eliminar_venta'])) {
 
     $modelo = $_REQUEST['modelo'];
@@ -231,7 +232,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
     }
     mysqli_close($mysqli_link);
 }
-
+#recibimos submit desde menu_admin.php
     if (isset($_REQUEST['vehiculo_venta'])){
 
         $select_query2 = "SELECT * FROM vehiculo_venda";
@@ -252,6 +253,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
 
     }
+#recibimos submit desde menu_admin.php
     if (isset($_REQUEST['vehiculo_aluger'])) {
 
         $select_query2 = "SELECT * FROM vehiculo_aluguer";
@@ -271,7 +273,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         }
         echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
     }
-
+#recibimos parámetros desde formulario de modificar_venta.php
     if(isset($_REQUEST['modificar_venta'])){
 
         $modelo = $_REQUEST['modelo'];
@@ -334,7 +336,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         header("refresh: 5; url = menu_admin.php");
 
     }
-
+#recibimos parámetros desde el formulario modificar_aluguer.php
     if(isset($_REQUEST['modificar_aluguer'])){
 
         $modelo = $_REQUEST['modelo'];
@@ -397,7 +399,7 @@ if (isset($_REQUEST['eliminar_venta'])) {
         header("refresh: 5; url = menu_admin.php");
 
     }
-
+#recibimos submit desde menu_admin.php
     if (isset($_REQUEST['reponer_aluguer'])) {
 
         $select_query2 = "SELECT * FROM vehiculo_devolto";

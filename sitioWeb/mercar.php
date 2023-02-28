@@ -25,14 +25,14 @@ if (mysqli_connect_errno())
         mysqli_connect_error());
     exit;
 }
-
+#comprobamos si el usuario de la sesión existe, si no enviamos nuevamente al login
 if(!isset($_SESSION["usuario"])){
 
     echo "No tienes la sesión iniciada, serás redireccionado para hacerlo ";
     header("refresh: 5; url = index.html");
 
 }else {
-
+    #si el campo del modelo no está vacío consultamos
     if (isset($modelo)) {
 
         $select_query = "SELECT * FROM vehiculo_venda where modelo='$modelo'";
@@ -44,6 +44,8 @@ if(!isset($_SESSION["usuario"])){
         $foto = $valor['foto'];
         $descricion = $valor['descricion'];
         $prezo = $valor['prezo'];
+
+        #si el resultado es superior a 0 iteramos para restarle 1 a dicha cantidad, en caso de ser inferior indicamos que no queda stock
         if ($cantidade > 0) {
 
             $cantidade = $cantidade - 1;
@@ -53,10 +55,10 @@ if(!isset($_SESSION["usuario"])){
             if($update == false){
                 echo "Erro o actualizar a cantidad de vehiculos en venta";
             }else{
-                echo " <br> Quédannos $cantidade $modelo de $marca dispoñibles, todo grazas ó proletariado. ";
-                header("refresh: 5; url = menu.php");
 
-                ## creación del recibo consultando también la información del comprador, ya que la del vehiculo la tenemos.s
+                echo " <br> Quédannos $cantidade $modelo de $marca dispoñibles, todo grazas ó proletariado. ";
+
+                ## creación del recibo consultando también la información del comprador, ya que la del vehiculo la tenemos.
                 $select_query = "SELECT * FROM usuario where usuario='$user'";
                 $result_user = mysqli_query($mysqli_link, $select_query);
                 $valor_user = mysqli_fetch_array($result_user, MYSQLI_ASSOC);
@@ -75,6 +77,9 @@ if(!isset($_SESSION["usuario"])){
                 fputs($recibo,"DATOS COMPRADOR:\nNome: $nome\n NIF: $nif_user\nTelefono: $telefono_user\nEmail: $email_user\n\n");
                 fputs($recibo,"DATOS VEHÍCULO:\nMarca: $marca\n Modelo: $modelo\nPrezo: $prezo\nDescrición: $descricion\n");
                 fclose($recibo);
+
+                mysqli_close($mysqli_link);
+                header("refresh: 5; url = menu.php");
 
             }
 

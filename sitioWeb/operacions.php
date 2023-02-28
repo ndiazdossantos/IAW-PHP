@@ -20,7 +20,7 @@ if (!isset($_SESSION["usuario"])) {
     header("refresh: 5; url = index.html");
 
 } else {
-    #echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"; ya se muestra arriba
+    # si el submit es "venta" consultamos la tabla vehiculo_venda y listamos todos los vehiculos de la misma mediante un bucle while
     if (isset($_REQUEST['venta'])) {
 
         $select_query2 = "SELECT * FROM vehiculo_venda";
