@@ -251,7 +251,9 @@ if (isset($_REQUEST['eliminar_venta'])) {
 
             echo"----------------------------------------------------<br>";
         }
-        echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
+        echo"  <form name='formulario_volver' method='POST' action='menu_admin.php'>
+               <input type='submit' value='Volver'/>
+               </form>";
 
     }
 #recibimos submit desde menu_admin.php
@@ -272,7 +274,9 @@ if (isset($_REQUEST['eliminar_venta'])) {
 
             echo "----------------------------------------------------<br>";
         }
-        echo"  <button onclick=location.href='menu_admin.php'>Volver</button>";
+        echo"  <form name='formulario_volver' method='POST' action='menu_admin.php'>
+               <input type='submit' value='Volver'/>
+               </form>";
     }
 #recibimos parámetros desde formulario de modificar_venta.php
     if(isset($_REQUEST['modificar_venta'])){

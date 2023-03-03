@@ -27,7 +27,10 @@ echo "<br><div align='right'><b>Usuario:</b> ".$_SESSION["usuario"]."</div><br>"
 
     <input type="submit"/>
 </form>
-<button onclick=location.href='menu.php'>Volver</button>
+<form name='formulario_volver' method='POST' action='menu.php'>
+    <input type='submit' value="Volver"/>
+</form>
+
 </body>
 </html>
 
